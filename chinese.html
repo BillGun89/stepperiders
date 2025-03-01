@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>草原骑手 - 蒙古荒野旅行</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2980b9;
+            --primary-light: #3498db;
+            --primary-dark: #1a5f88;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --background: #f9f9f9;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+            --container-width: 1100px; /* Standard container width for consistency */
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Noto Sans SC', 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--background);
+            padding-top: 70px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Sans SC', 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+        
+        /* Modern Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 40px;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        nav ul li {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: transparent;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        
+        nav ul li:hover {
+            background: rgba(41, 128, 185, 0.1);
+            border: 1px solid rgba(41, 128, 185, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Hamburger Menu - More Minimal */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1001;
+        }
+        
+        .hamburger div {
+            width: 25px;
+            height: 2px;
+            background-color: var(--primary);
+            margin: 5px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+        
+        .hamburger.active .line1 {
+            transform: translateY(7px) rotate(45deg);
+        }
+        
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+        
+        .hamburger.active .line3 {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        
+        /* Modern Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('image/road.jpg') no-repeat center center/cover;
+            height: 80vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            color: var(--white);
+            text-align: center;
+            background-attachment: fixed;
+            margin-top: -70px;
+            left: 0;
+            right: 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            animation: fadeIn 2s ease-in-out;
+            max-width: 800px;
+        }
+        
+        .hero p {
+            margin-bottom: 35px;
+            font-size: 1.4rem;
+            color: #a8e0ff;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
+            max-width: 700px;
+            line-height: 1.4;
+            font-weight: 300;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero button {
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 28px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .hero button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        /* Fix header width */
+        header {
+            width: 100%;
+        }
+        
+        /* Modern Section Styling - Fixed width for all sections */
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Standard container class for consistent widths */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+        
+        /* Modernized About Us Section */
+        .about-container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0;
+            line-height: 1.6;
+            text-align: left;
+        }
+        
+        .about-container h2 {
+            font-size: 2.2rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .about-container h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto;
+            border-radius: 1px;
+        }
+        
+        .about-container p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: var(--text-light);
+            animation: fadeInUp 1.2s ease-out;
+            font-weight: 300;
+        }
+        
+        .about-container h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-top: 40px;
+            margin-bottom: 20px;
+            animation: fadeInLeft 1s ease-out;
+            font-weight: 600;
+        }
+        
+        /* Modern Feature List - fixed to 2x2 grid */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            width: 100%;
+            max-width: var(--container-width);
+        }
+        
+        .feature-list li {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            animation: fadeInUp 1.2s ease-out;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-list li strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .feature-list li:before {
+            content: '';
+            width: 4px;
+            height: 40px;
+            background: var(--primary);
+            position: absolute;
+            left: 0;
+            top: 20px;
+            border-radius: 0 2px 2px 0;
+        }
+        
+        /* Modern Tours Section */
+        .tour-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: var(--container-width);
+        }
+        
+        .tour-box {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            width: calc(50% - 15px); /* Two columns with gap in between */
+            max-width: 360px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tour-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tour-box img {
+            width: 100%;
+            border-radius: 6px;
+            height: 180px; /* Reduced height */
+            object-fit: cover;
+        }
+        
+        .tour-box h3 {
+            margin-top: 20px;
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .tour-route {
+            margin-top: 20px;
+            text-align: left;
+            border-left: 3px solid var(--primary);
+            padding-left: 15px;
+        }
+        
+        .tour-route h4 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .tour-day {
+            margin-bottom: 10px;
+            position: relative;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .tour-day strong {
+            color: var(--primary);
+            margin-right: 8px;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        /* Gallery */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 5px;
+            margin: 0 auto;
+            width: 100%;
+            max-width: var(--container-width);
+        }
+        
+        .gallery-container img {
+            width: 100%;
+            height: 180px; /* Reduced height */
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+        
+        .gallery-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+        }
+        
+        /* Modern Logo */
+        .logo {
+            position: fixed;
+            top: 15px;
+            left: 40px;
+            z-index: 1001;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            letter-spacing: 0.5px;
+        }
+        
+        /* Mongolia section with fixed small image */
+        .mongolia-section {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin: 30px auto;
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: 100%;
+        }
+        
+        .mongolia-image {
+            width: 180px;
+            max-height: 270px;
+            flex: none; /* Prevent flexbox from affecting size */
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .mongolia-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.6s ease;
+        }
+        
+        .mongolia-section:hover .mongolia-image img {
+            transform: scale(1.05);
+        }
+        
+        .mongolia-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: left;
+        }
+        
+        /* Mongolia features list styling */
+        .mongolia-features {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .mongolia-features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mongolia-features .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        /* Tagline banner */
+        .tagline-banner {
+            width: 100%;
+            margin: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .tagline-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .tagline-content span {
+            margin: 0 15px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Footer styles */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 60px 20px;
+            width: 100%;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        /* Company info section */
+        .footer-company {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 15px;
+            font-family: 'Noto Sans SC', 'Montserrat', sans-serif;
+        }
+        
+        .footer-company p {
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .footer-info {
+            margin-top: 10px;
+        }
+        
+        .footer-info div {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .footer-info i {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Social media section */
+        .footer-social {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        .footer-social h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .social-icon {
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+        
+        .social-icon i {
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+        
+        /* Contact form section */
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            font-family: 'Noto Sans SC', 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .contact-form input::placeholder, 
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .contact-form textarea {
+            height: 100px;
+            resize: none;
+        }
+        
+        .contact-form button {
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+        }
+        
+        .contact-form button:hover {
+            background: var(--white);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .footer-social p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Language switcher button */
+        nav ul li:last-child {
+    background: transparent;
+    border: none;
+}
+
+    /* Language button styling */
+    .lang-nav-item {
+    background-color: var(--primary) !important; /* Always show background */
+    border-radius: 4px;
+    margin-left: 15px !important; /* Add extra spacing */
+    border: 1px solid transparent !important; /* Override any border */
+}
+
+.lang-nav-item a {
+    color: white !important; /* Force white text */
+}
+
+.lang-nav-item:hover {
+    background-color: var(--primary-dark) !important; /* Darker on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Remove the old language switcher class */
+.language-switcher {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .lang-nav-item {
+        margin: 10px auto !important;
+        width: 80% !important;
+        background-color: var(--primary) !important;
+    }
+}
+        
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-social {
+                grid-column: 1 / 3;
+                margin-top: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-social {
+                grid-column: auto;
+                margin-top: 30px;
+                align-items: flex-start;
+            }
+            
+            .footer-social h3 {
+                text-align: left;
+            }
+            
+            .social-icons {
+                justify-content: flex-start;
+            }
+            
+            .hero {
+                padding-top: 100px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            nav {
+                justify-content: center;
+                padding: 0;
+                display: none;
+            }
+            
+            nav.active {
+                display: flex;
+                padding-top: 60px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+            
+            nav ul li {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+                text-align: center;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .logo {
+                left: 20px;
+                font-size: 1.2rem;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .tour-box {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .gallery-container img {
+                height: 150px;
+            }
+            
+            .mongolia-section {
+                flex-direction: column;
+            }
+            
+            .mongolia-image {
+                width: 100%;
+                height: 180px;
+                margin-bottom: 20px;
+            }
+            
+            .language-switcher {
+                top: 15px;
+                right: 80px; /* Adjust for mobile to avoid overlap with hamburger */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation -->
+    <a href="#home" class="logo">草原骑手</a>
+    
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+    </div>
+    <nav id="menu">
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#tours">我们的旅行</a></li>
+            <li><a href="#about">关于我们</a></li>
+            <li><a href="#contact">联系我们</a></li>
+            <li class="lang-nav-item"><a href="index.html">English</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home">
+        <div class="hero">
+            <h1>欢迎来到蒙古大草原</h1>
+            <p>探索未知，享受自由，体验前所未有的蒙古荒野之旅。</p>
+            <button onclick="scrollToSection('about')">了解更多</button>
+        </div>
+    </header>
+
+    <!-- Improved About Us Section -->
+    <section id="about" class="section">
+        <div class="about-container">
+            <h2>关于我们</h2>
+            
+            <p>在草原骑手，我们提供无与伦比的摩托车游览体验，带您穿越蒙古国令人叹为观止的自然风光。
+                这不仅仅是一次旅行，更是一次真正的冒险，您可以掌握主导权，感受荒野的原始力量，
+                同时我们专业的支持团队确保您拥有难忘旅程所需的一切。</p>
+            
+            <h3>为什么选择草原骑手？</h3>
+            <ul class="feature-list">
+                <li><strong>自由骑行，探索荒野</strong> – 您可以完全控制自己的冒险，骑行穿越无边无际的草原、广阔的沙漠和雄伟的山脉。
+                    我们的团队在后方跟随，确保您的独立性，同时在需要时提供安全和支持。</li>
+                
+                <li><strong>全程支持的旅程</strong> – 当您征服蒙古崎岖的地形时，我们的机械师、厨师和翻译与您同行。
+                    无论是快速维修、篝火旁的美食，还是与游牧家庭交流的帮助，我们都能为您提供支持。</li>
+                
+                <li><strong>正宗的蒙古体验</strong> – 在传统的蒙古包营地过夜，在满是星星的天空下用餐，沉浸在蒙古国传奇的好客文化中。
+                    我们的当地团队确保您体验到游牧文化的真正精髓。</li>
+                
+                <li><strong>令人惊叹的风景</strong> – 从戈壁沙漠的起伏沙丘到未开发的阿尔泰山脉，每一次转弯都会为您揭示一个新的、令人叹为观止的美景。
+                    这种自由和广阔的感觉是地球上其他任何地方都无法比拟的。</li>
+            </ul>
+            
+            <h3>为什么选择蒙古？</h3>
+            
+            <div class="mongolia-section">
+                <div class="mongolia-text">
+                    <p>蒙古是冒险者的最后真正前沿之一。拥有无尽的越野道路、原始自然和丰富的游牧文化，
+                    它是摩托车手的梦想目的地。</p>
+                    
+                    <ul class="mongolia-features">
+                        <li><span class="icon"></span> 广阔未被触及的风景</li>
+                        <li><span class="icon"></span> 古老的游牧传统</li>
+                        <li><span class="icon"></span> 无尽的越野冒险</li>
+                        <li><span class="icon"></span> 从沙漠到山脉的多样地形</li>
+                    </ul>
+                    
+                    <p>这里没有围栏，没有交通堵塞——只有开阔的道路、野马和冒险的召唤。</p>
+                </div>
+                <div class="mongolia-image">
+                    <img src="image/mongolia.jpg" alt="蒙古风景">
+                </div>
+            </div>
+                
+            <p class="conclusion">如果您正在寻找一次狂野、难忘的旅程，草原骑手就是您通往蒙古真实越野体验的门户。</p>
+            
+            <div class="tagline-banner">
+                <div class="tagline-content">
+                    <span>狂野骑行。</span>
+                    <span>自由探索。</span>
+                    <span>体验冒险。</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tours" class="section">
+        <div class="container">
+            <h2>我们的旅行</h2>
+            <div class="tour-container">
+                <div class="tour-box">
+                    <img src="image/gobi.jpg" alt="沙漠与山脉之旅">
+                    <h3>沙漠与山脉之旅</h3>
+                    <div class="tour-route">
+                        <h4>路线概览</h4>
+                        <div class="tour-day"><strong>第1天:</strong> 乌兰巴托 → 埃尔森塔萨尔海（中戈壁省）→ 策策尔勒格 (270 公里)</div>
+                        <div class="tour-day"><strong>第2天:</strong> 策策尔勒格 → 特尔辛察干湖 → 霍尔戈 (200 公里)</div>
+                        <div class="tour-day"><strong>第3天:</strong> 霍尔戈 → 哈特加尔（呼斯贵湖）(300 公里)</div>
+                        <div class="tour-day"><strong>第4天:</strong> 哈特加尔（休息，观光，休息）</div>
+                        <div class="tour-day"><strong>第5天:</strong> 哈特加尔 → 汗赫（北岸）(150 公里)</div>
+                        <div class="tour-day"><strong>第6天:</strong> 汗赫 → 任沁尔洪贝 → 乌兰乌勒 (250 公里)</div>
+                        <div class="tour-day"><strong>第7天:</strong> 乌兰乌勒 → 布尔干省 (270 公里)</div>
+                        <div class="tour-day"><strong>第8天:</strong> 布尔干 → 忽斯台国家公园 (250 公里)</div>
+                        <div class="tour-day"><strong>第9天:</strong> 忽斯台国家公园 → 乌兰巴托 (100 公里)</div>
+                    </div>
+                    <a href="tour1_cn.html" class="btn">阅读更多</a>
+                </div>
+                
+                <div class="tour-box">
+                    <img src="image/lake.jpg" alt="游牧冒险之旅">
+                    <h3>游牧冒险之旅</h3>
+                    <div class="tour-route">
+                        <h4>路线概览</h4>
+                        <div class="tour-day"><strong>第1天:</strong> 佐尔戈尔哈尔汗山 – 巴嘎嘎兹林楚鲁 (220 公里)</div>
+                        <div class="tour-day"><strong>第2天:</strong> 察干苏瓦尔加 (230 公里)</div>
+                        <div class="tour-day"><strong>第3天:</strong> 三峰驼旅馆 (240 公里)</div>
+                        <div class="tour-day"><strong>第4天:</strong> 约林阿姆 – 戈壁古尔班赛汗 (140 公里)</div>
+                        <div class="tour-day"><strong>第5天:</strong> 昂金寺 (200 公里)</div>
+                        <div class="tour-day"><strong>第6天:</strong> 巴特乌尔济镇 – 乌兰祖特嘎兰 (260 公里)</div>
+                        <div class="tour-day"><strong>第7天:</strong> 哈尔和林 – 埃尔森塔萨尔海 (210 公里)</div>
+                        <div class="tour-day"><strong>第8天:</strong> 忽斯台国家公园 – 蒙古游牧民 (180 公里)</div>
+                        <div class="tour-day"><strong>第9天:</strong> 乌兰巴托 (50 公里)</div>
+                    </div>
+                    <a href="tour2_cn.html" class="btn">阅读更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2>图片廊</h2>
+            <div class="gallery-container">
+                <img src="image/horse.jpg" alt="蒙古马">
+                <img src="image/malchin.jpg" alt="蒙古牧民">
+                <img src="image/mountain.jpg" alt="蒙古山脉">
+                <img src="image/sky.jpg" alt="蒙古天空">
+                <img src="image/temee.jpg" alt="骆驼">
+                <img src="image/tal.jpg" alt="草原风景">
+                <img src="image/uul.jpg" alt="山脉风景">
+                <img src="image/burged.jpg" alt="雄鹰">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="footer-container">
+            <!-- Company Information (Left) -->
+            <div class="footer-company">
+                <div class="footer-logo">草原骑手</div>
+                <p>通过我们无与伦比的摩托车之旅，体验真正的蒙古荒野。冒险在无尽地平线的土地上等待着您。</p>
+                <div class="footer-info">
+                    <div>
+                        <i>📍</i>
+                        <span>蒙古国乌兰巴托苏赫巴托尔街123号</span>
+                    </div>
+                    <div>
+                        <i>📞</i>
+                        <span>+976 1234 5678</span>
+                    </div>
+                    <div>
+                        <i>📧</i>
+                        <span>info@stepperiders.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media Icons (Middle) -->
+            <div class="footer-social">
+                <h3>关注我们</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i>f</i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i>in</i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i>ig</i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i>x</i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i>yt</i>
+                    </a>
+                </div>
+                <p>在社交媒体上关注我们的冒险，获取蒙古荒野最新的更新、照片和故事。</p>
+            </div>
+            
+            <!-- Contact Form (Right) -->
+            <div class="footer-contact">
+                <h3>给我们发送消息</h3>
+                <form class="contact-form">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="您的邮箱" required>
+                    <textarea placeholder="您的留言" required></textarea>
+                    <button type="submit">发送消息</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const hamburger = document.querySelector('.hamburger');
+            menu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+        
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Add scroll event to change navbar background
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const logo = document.querySelector('.logo');
+            
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
